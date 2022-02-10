@@ -11,6 +11,8 @@ dir | sort-object –descending –property lastwritetime
 dir | foreach {"$($_.GetType().fullname)  -  $_.name"}  #lazy quick version using alias
 Get-ChildItem | ForEach-Object {"$($_.GetType().fullname)  -  $_.name"}  #Proper script version
 
+Get-Process | Select-Object -Property name, @{name="ProcessID";expression={"$($_.id) ---> $($_.name)"}}
+
 #Modules
 Get-Module #to see those loaded
 Get-Module –listavailable #to see all available
